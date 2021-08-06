@@ -18,13 +18,17 @@ export const Container = styled.div`
     justify-content: space-between;
 
     .options-repos {
-      /* background-color: red; */
       display: flex;
       justify-content: space-around;
+
+      .selected {
+        border-bottom: 2px solid #000;
+      }
 
       h2 {
         font-family: 'Inter', sans-serif;
         font-weight: 500;
+        font-size: 24px;
         display: flex;
         position: relative;
         padding-bottom: 8px;
@@ -49,7 +53,7 @@ export const Container = styled.div`
     }
 
     .content {
-      /* background-color: red; */
+      /* border: 1px solid red; */
       height: 90%;
       width: 100%;
       display: flex;
@@ -68,9 +72,47 @@ export const Container = styled.div`
         gap: 16px;
         overflow-y: auto;
 
-        
+        .user-not-found {
+          display: flex;
+          gap: 32px;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        h1 {
+          font-family: 'Inter', sans-serif;
+          font-weight: 600;
+          font-size: 24px;
+        }
+      }
+
+    }
+  }
+
+  @media (max-width: 500px) {
+    main {
+      .options-repos {
+        justify-content: space-between;
+        h2 {
+          font-size: 18px;
+        }
       }
     }
-
+  }
+  @media (max-width: 650px) {
+    main {
+      .content {
+        .my-repos {
+          width: 100%;
+        }
+      }
+    }
+  }
+  @media (max-width: 623px) {
+    main {
+      .options-repos {
+        margin-bottom: 10px;
+      }
+    }
   }
 `;

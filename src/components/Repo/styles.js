@@ -6,26 +6,47 @@ export const Container = styled.div`
   border-radius: 16px;
   padding: 10px;
   width: 100%;
-  height: 60px;
   display: flex;
   justify-content: space-around;
   align-items: center;
 
-  h2 {
-    font-family: "Inter", sans-serif;
-    font-weight: 600;
-    font-size: 18px;
+  .repo-owner {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    h2 {
+      font-family: "Inter", sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+    }
+    h3 {
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+    }
+
   }
-  h3 {
-    font-family: "Inter", sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-  }
-  h4 {
+  .language {
+    display: flex;
+    width: 70%;
+    align-items: center;
+    justify-content: center;
+    /* border: 1p x solid red; */
+    h4 {
     font-family: "Inter", sans-serif;
     font-weight: 400;
   }
+  }
   svg {
     cursor: pointer;
+  }
+
+  @media (max-width: 650px) {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;    
+  gap: 8px;
   }
 `;

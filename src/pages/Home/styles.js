@@ -8,6 +8,12 @@ export const Container = styled.div`
   justify-content: center;
 
   main {
+
+    .test {
+      width: 500px;
+      height: 100px;
+      background-color: #fff;
+    }
     width: 400px;
     height: 400px;
     display: flex;
@@ -70,23 +76,6 @@ export const Container = styled.div`
         ::placeholder {
           font-family: 'Inter', sans-serif;
           font-weight: 600;
-        }
-      }
-
-      button {
-        width: 60%;
-        padding: 8px 12px;
-        background-color: #1A1A1A;
-        color: #fff;
-        font-family: 'Inter', sans-serif;
-        font-weight: 400;
-        border: none;
-        border-radius: 8px;
-        box-shadow: 1px 2px 2px #000000;
-
-        &:hover {
-          background-color: #000000;
-          box-shadow: 1px 2px 2px #1A1A1A;
         }
       }
     }
