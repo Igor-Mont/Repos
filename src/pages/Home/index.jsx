@@ -11,6 +11,9 @@ function Home() {
   const history = useHistory();
   const inputRef = useRef('');
   const handleLoginWithUser = async () => {
+    const logedUser = await users.map((v) => v.user.includes(inputRef.current.value)).includes(true);
+    if (logedUser) return history.push(`/repos/${inputRef.current.value}`);
+
     if (inputRef.current.value !== '') {
       const usersRef = await database.collection('users');
       const dbRef = await usersRef.doc(usersRef.key).set({
@@ -19,20 +22,21 @@ function Home() {
 
       history.push(`/repos/${inputRef.current.value}`);
     }
-    toast.error('Inisra um nome de usuário');
+    return toast.error('Inisra um nome de usuário');
   };
+  // console.log(users.map((v) => v.user.includes('Igor-Mont')));
+  // console.log(users);
 
   useEffect(() => {
     (async function getUsers() {
       const usersRef = await database.collection('users');
       const dataGet = await usersRef.get();
-      const data = await dataGet.docs;
-      setUsers(data);
+      const usersRegistred = [];
+      const data = await dataGet.forEach((v) => usersRegistred.push(v.data()));
+      setUsers(usersRegistred);
     }());
   }, []);
 
-  const { delegate } = users.length >= 1 ? users[0] : '';
-  console.log(delegate);
   return (
     <Container>
       <Toaster toastOptions={{
@@ -43,11 +47,6 @@ function Home() {
       }}
       />
       <main>
-        {/* <div className="test">
-          {users.length >= 1 && users.map((value, i) => (
-            <p key={i}>{value._delegate}</p>
-          ))}
-        </div> */}
         <div className="logo-title">
           <img src={gitHubLogo} alt="Logo do GitHub" />
           <h1>RepoS</h1>
