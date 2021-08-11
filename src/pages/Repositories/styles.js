@@ -20,9 +20,40 @@ export const Container = styled.div`
     .options-repos {
       display: flex;
       justify-content: space-around;
+      align-items: center;
 
       .selected {
         border-bottom: 2px solid #000;
+      }
+
+      button {
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+        padding: 8px 12px;
+        background-color: #1a1a1a;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        box-shadow: 1px 2px 2px #000000;
+        animation: upDown infinite 2s ease-in-out;
+
+        &:hover {
+          background-color: #000000;
+          box-shadow: 1px 2px 2px #1a1a1a;
+        }
+
+        @keyframes upDown {
+        0% {
+          transform: translateY(0)
+        }
+        50% {
+          transform: translateY(-8px)
+        }
+        100% {
+          transform: translateY(0)
+        }
+      }
       }
 
       h2 {

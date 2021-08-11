@@ -12,9 +12,9 @@ function Home() {
   const inputRef = useRef('');
   const handleLoginWithUser = async () => {
     const logedUser = await users.map((v) => v.user.includes(inputRef.current.value)).includes(true);
-    if (logedUser) return history.push(`/repos/${inputRef.current.value}`);
 
     if (inputRef.current.value !== '') {
+      if (logedUser) return history.push(`/repos/${inputRef.current.value}`);
       const usersRef = await database.collection('users');
       const dbRef = await usersRef.doc(usersRef.key).set({
         user: inputRef.current.value,
@@ -24,8 +24,6 @@ function Home() {
     }
     return toast.error('Inisra um nome de usuário');
   };
-  // console.log(users.map((v) => v.user.includes('Igor-Mont')));
-  // console.log(users);
 
   useEffect(() => {
     (async function getUsers() {
@@ -53,7 +51,13 @@ function Home() {
         </div>
         <div className="box-main">
           <h2>Insira seu usuário do GitHub</h2>
-          <input ref={inputRef} type="text" name="userGitHub" id="" placeholder="Usuário do GitHub" />
+          <input
+            ref={inputRef}
+            type="text"
+            name="userGitHub"
+            placeholder="Usuário do GitHub"
+            onKeyDown={(e) => (e.keyCode === 13 ? handleLoginWithUser() : null)}
+          />
           <Button title="Entrar" onClick={handleLoginWithUser} />
         </div>
       </main>

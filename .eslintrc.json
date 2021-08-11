@@ -14,6 +14,7 @@
         "extensions": [".js", ".jsx"]
       }
     ],
+    "no-noninteractive-element-to-interactive-role": "off",
     "max-len": "off",
     "react/require-default-props": "off",
     "no-underscore-dangle": "off",
