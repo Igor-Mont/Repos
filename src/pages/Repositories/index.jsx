@@ -14,12 +14,12 @@ function Repositories() {
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
-    async function getData() {
+    async function getRepos() {
       const response = await fetch(`https://api.github.com/users/${user}/repos`);
       const data = await response.json();
       setRepos(data);
     }
-    getData();
+    getRepos();
   }, []);
 
   const handleBackToHome = () => {

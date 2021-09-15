@@ -11,7 +11,8 @@ function Home() {
   const history = useHistory();
   const inputRef = useRef('');
   const handleLoginWithUser = async () => {
-    const logedUser = await users.map((v) => v.user.includes(inputRef.current.value)).includes(true);
+    const logedUser = await users.map((v) => v.user.includes(inputRef.current.value));
+    console.log(logedUser);
 
     if (inputRef.current.value !== '') {
       if (logedUser) return history.push(`/repos/${inputRef.current.value}`);
